@@ -30,3 +30,40 @@ let lats = mats(2,3, function(a,b){
 });
 
 console.log(lats);
+
+
+function task1(){
+    console.log("task 1");
+}
+
+function task2(data){
+    let ans = data+"1"
+    return ans;
+}
+
+// task1();
+
+// setTimeout(function(){
+//     let a = task2("two");
+//     console.log(a);
+// }, 2000);
+
+setTimeout(function(data) { 
+    let a = task2(data);  // Passes the value of data to task2
+    console.log(a);
+}, 2000, "Hello");
+
+
+// callback Anonymous function -----------------------------------------------------------------
+
+function hithere(callback){
+    callback("hithere");
+}
+
+function main(){
+    hithere(function(value){
+        console.log(value);
+        
+    })
+}
+main();
