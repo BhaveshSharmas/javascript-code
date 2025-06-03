@@ -1,0 +1,26 @@
+const express = require('express')
+const app = express()
+//THISIS the dumb way of doing checking ans stuff
+app.get("/",function(req,res){
+    const username = req.headers.username;
+    const pass = req.headers.pass;
+    const k_id = req.query.kid;
+
+    if(username != "bhavesh" || pass != "pass"){
+        res.status(403).json({
+            msg: 'user not exist'
+        });
+        return;
+    }
+
+    if(k_id != 1 && k_id != 2){
+        res.status(411).json({
+            msg: 'wrong inputs'
+        });
+        return;
+    }
+
+    res.send("you are healthy")
+})
+
+app.listen(3000)
