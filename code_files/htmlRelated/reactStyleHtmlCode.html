@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="buttonParent">
+
+    </div>
+</body>
+
+<script>
+    let state = {
+        count: 0
+    }
+    function pressed(){ //you only have to write this in react
+        state.count ++;
+        reRender();
+    }
+    function reRender(){ //this react will do
+        document.getElementById("buttonParent").innerHTML = "";
+        const bb = component(state.count);
+        document.getElementById("buttonParent").appendChild(bb);
+    }
+    function component(count){ //you only have to write this in react
+        const button = document.createElement("button")
+        button.innerHTML = `counter ${count}`;
+        button.setAttribute("onClick",'pressed()');
+        return button;
+    }
+
+    reRender(); //this react will do
+</script>
+
+</html>
