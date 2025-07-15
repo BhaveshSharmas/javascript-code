@@ -79,13 +79,13 @@ app.post("/signup",async function(req,res){
     const exist = await User.findOne({email: username})
     if(exist){
         return res.status(411).send("error")
-    }
+    }   
 
     const user = new User({
     name: username, 
     email: email, 
     password: password
-    })
+    }) 
     user.save();
     
     res.send("sumbit")
