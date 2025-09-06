@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+{% block title %}
+Devil Inside
+{% endblock %}
+
+{% block content %}
+<h1>Inside | Home page</h1>
+{% endblock %}
+
+{% block bhavesh %}
+
+<div class="grid grid-cols-3 gap-3 m-4">
+    {% for i in datas %}
+    <div class="bg-blue-500 p-5 rounded text-center">
+        <img src="{{i.image.url}}" alt="" class="mx-auto">
+
+        <div class="flex justify-between px-2">
+          <h2 class="text-lg">{{i.name}}</h2>  
+          <h3 class="">{{i.price}}</h3>  
+        </div>
+    
+        <div class="px-2 mt-2">
+            <a href="{% url 'chai_details' i.id%}">
+                <button type="button" class="hover:bg-black hover:text-white w-full rounded-md bg-orange-200 inline-flex items-center justify-center px-4 py-2">
+                    {{i.type}} - {{i.description}}
+                </button>
+            </a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+
+<div class="grid grid-cols-3 gap-3 m-4">
+    {% for i in datas %}
+    <div class="bg-blue-500 p-5 rounded">
+    <img src="{{i.image.url}}" alt="">
+    <h3 class="bg-orange-500">{{i.name}}</h3>
+    </div>
+    {% endfor %}
+</div>
+
+<div class="grid grid-cols-3 gap-3 m-4">
+    {% for i in datas %}
+    <div class="bg-blue-500 p-5 rounded">
+    <img src="{{i.image.url}}" alt="">
+    <h3 class="bg-orange-500">{{i.name}}</h3>
+    </div>
+    {% endfor %}
+</div>
+
+
+
+{% endblock  %}
