@@ -1,0 +1,5 @@
+Notes
+
+Where to store tokens in Users PC?
+Can store in cookies.
+localStorage => exolicitly send this as a Bearer header in every request.

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id="title" type="text" placeholder="Title">
+    <input id="desk" type="text" placeholder="description"><br>
+
+    <div id="container">
+
+    </div>
+</body>
+
+<script>
+    let globalId = 1;
+
+    function todo(){
+    const title = document.getElementById("title").value;
+    const desc = document.getElementById("desk").value;
+    const parent = document.getElementById("container");
+    parent.appendChild(createChild(title,desc,globalId++))
+    // let originalHTML = document.getElementById("container").innerHTML;
+    
+    // document.getElementById("container").innerHTML = originalHTML +  `<div>${title}</div>
+    // <div>${desc}</div>
+    // <button>Add</button>`
+
+    console.log(title + " " +desc);  
+    }
+    
+    function createChild(titles,description,id){
+    const child = document.createElement("div");
+    const firstGp = document.createElement("div")
+    firstGp.innerHTML = titles
+    const SecondGp = document.createElement("div")
+    SecondGp.innerHTML = description
+    const thirdGp = document.createElement("Button")
+    thirdGp.innerHTML = "Mark as done"
+    child.appendChild(firstGp)
+    child.appendChild(SecondGp)
+    child.appendChild(thirdGp)
+    child.setAttribute("id",id)
+    return child;
+    }
+
+    function creatting(state){
+        const parent = document.getElementById("container");
+        parent.innerHTML = "";
+        for (let i = 0; i < state.length; i++) {
+            const child = createChild(state[i].title,state[i].desc,state[i].id);
+            parent.appendChild(child)
+        }
+    }
+
+    creatting([{
+        title: "hello",
+        desc: "perfect",
+        id: 1
+    },
+    {
+        title: "yoyo",
+        desc: "perfecto",
+        id: 2
+    }
+    ]);
+</script>
+
+
+
+</html>

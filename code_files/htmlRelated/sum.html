@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="number" id="num1"> <br>
+    <input type="number" id="num2"><br>
+    <button id="buttons" onclick="summ()">Calculate</button>
+    <button id="buttons" onclick="alertt()">Alert for fun</button><br>
+    <p class="username" id="username"></p>
+    <br>
+
+
+    <input oninput="debounce()" type="number" id="principalAmount" placeholder="principal amount"> <br>
+    <input oninput="claculate()" type="number" id="ROI" placeholder="ROI"><br>
+    <input oninput="claculate()" type="number" id="Time" placeholder="time in year"><br>
+    <button id="buttons" onclick="claculate()">Calculate</button>
+
+    <p class="finalTest" id="finalTest"></p>
+</body>
+
+<script>
+
+    let timeout = null;
+    function debounce(){
+        clearInterval(timeout)
+        timeout = setTimeout(function(){
+            claculate();
+        },100)
+    }
+    function claculate(){
+        var pa = document.getElementById("principalAmount").value;
+        var roi = document.getElementById("ROI").value;
+        var time = document.getElementById("Time").value;
+
+        fetch("http://localhost:3000/intrest?pa=" + pa + "&ri=" + roi + "&yr=" + time)
+            .then(function(responce){
+                responce.text().then(function(ans){
+                    console.log(ans);
+                    document.querySelector(".finalTest").innerHTML = ans;
+                })
+            })
+    }
+
+
+    function summ(){
+        var n1 = document.getElementById("num1").value;
+        var n2 = document.getElementById("num2").value;
+        fetch("http://localhost:3000/sum?a="+ n1 + "&b=" + n2 )
+            .then(function(res){
+                res.text().then(function(ans){
+                    console.log(ans)
+                    document.querySelector(".username").innerHTML = ans
+                })
+                
+            })
+        
+        
+        document.querySelector(".username").innerHTML = parseInt(n1) + parseInt(n2)
+        // console.log(n1+n2);
+    }
+    
+    function alertt(){
+        alert("fun fun");
+    }
+</script>
+</html>
